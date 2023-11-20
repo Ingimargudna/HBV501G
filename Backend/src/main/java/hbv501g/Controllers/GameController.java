@@ -128,4 +128,22 @@ public class GameController {
         return new JsonResponse<>(false, "no games found for provided user", null);
     }
     
+    /**
+     * fall til að uppfæra leik
+     */
+    @PutMapping("{id}")
+    public jsonResponse<Game> updateGame(@PathVariable Long id, @RequestBody Game updateGame) {
+        Game existingGame = gameService.findByIdGame(id);
+        if (existingGame != null) {
+            existingGame.setSomeField(updateGame.getSomeField());
+            Game updated = gameService.updateGame(existingGame);
+        }
+        if (updated != null) {
+            return new JsonResponse<>(true, "Game updated successfully", updated);
+        }
+        else {
+            return new JsonResponse<>(false, "Game not found", null);
+        }
+        }
+    }
 }
