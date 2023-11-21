@@ -63,7 +63,7 @@
 <h1>new game</h1>
 
 <select bind:value={selected}>
-    {#each fields as option}<option value={option}>{option.name}</option>{/each}
+    {#each fields as option}<option value={option.id}>{option.name}</option>{/each}
 </select>
 
 <table shadow>
