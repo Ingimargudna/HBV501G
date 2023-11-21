@@ -3,7 +3,7 @@
     import {browser} from '$app/environment';
     import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
     let backendRoute = 'http://localhost:8080';
-    let selected ='select field';
+    let selected ="Select field";
     let fields = [];
     let scores = [
         {id: 1, hole: 1, throws: 0},
@@ -33,10 +33,13 @@
             {method: 'GET',
             headers: {"Content-Type": "application/json",
             "Authorization": "Bearer "+window.sessionStorage.getItem('authenticatorTocen')}
+
             }
         )
         const json = await res.json();
         if (json.success) {
+            console.log("her eru fields")
+            console.log(json)
             fields = json.data;
         }
     });
@@ -46,8 +49,8 @@
         const res = await fetch(
             backendRoute + '/game/',
             {method: 'POST',
-                headers: {"Content-Type": "application/json",
-                        "Authorization": "Bearer "+window.sessionStorage.getItem('authenticatorTocen')},
+                headers: {"Content-Type": "application/json", 
+                "Authorization": "Bearer " + window.sessionStorage.getItem('authenticatorTocen')},
                 body: JSON.stringify({
                     scores
                 })
