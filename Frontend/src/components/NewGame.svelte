@@ -58,6 +58,9 @@
         )
     }
 
+
+    //$: console.log('Changed selected:', selected)
+
 </script>
 
 <h1>new game</h1>

@@ -24,6 +24,7 @@
             console.log('her er data');
             console.log(data);
             if (res.ok) {
+                window.sessionStorage.setItem("userID",data.data.id)
                 return data;
             }
         }
