@@ -3,12 +3,8 @@
     import {browser} from '$app/environment';
     import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
     let backendRoute = 'http://localhost:8080';
-    let selected ="Select field";
+    let selected;
     let fields = [];
-    let scores = [
-        {id: 1, hole: 1, throws: 0},
-        {id: 2, hole: 2, throws: 0}
-    ];
 
     function updateScore(id, key, value) {
         scores = scores.map(score => {
@@ -38,7 +34,7 @@
         )
         const json = await res.json();
         if (json.success) {
-            console.log("her eru fields")
+            //console.log("her eru fields")
             console.log(json)
             fields = json.data;
         }
@@ -69,20 +65,9 @@
     {#each fields as option}<option value={option.id}>{option.name}</option>{/each}
 </select>
 
-<table shadow>
-    <TableHead>
-        <TableHeadCell>hole number</TableHeadCell>
-        <TableHeadCell>number of throws</TableHeadCell>
-    </TableHead>
-    <TableBody class="divide-y">
-        {#each scores as score (score.id)}
-            <TableBodyRow>
-                <td>{score.hole}</td>
-                <td><input type="number" bind:value={score.throws} on:input={() => updateScore(score.id, 'throws', score.throws)}/></td>
-            </TableBodyRow>
-        {/each}
-    </TableBody>
-</table>
+{#if selected != null}
+    <p>heyhó</p>
+{/if}
 
-<button on:click={addRow}>Add Row</button>
+
 <button on:click={saveGame}>Save Data</button>
