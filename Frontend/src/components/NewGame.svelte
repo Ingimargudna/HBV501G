@@ -57,7 +57,7 @@
 <h1>new game</h1>
 
 <select bind:value={selected}>
-    {#each fields as option}<option value={option}>{option}</option>{/each}
+    {#each fields as field}<option value={field}>{field}</option>{/each}
 </select>
 
 <table shadow>
@@ -75,5 +75,5 @@
     </TableBody>
 </table>
 
-<button on:click={addRow}>Add Row</button>
-<button on:click={saveGame}>Save Data</button>
+<button class="font-medium hover:underline" on:click={addRow}>Add Row</button>
+<button class="font-medium hover:underline" on:click={saveGame}>Save Data</button>

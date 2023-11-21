@@ -1,6 +1,7 @@
 
 
 <script>
+    import {A} from 'flowbite-svelte';
     import {goto,} from '$app/navigation';
     //import {browser} from '$app/enviroment'; þarf kanski ekki
     let backendRoute = 'http://localhost:8080/user';
@@ -59,8 +60,8 @@
         type="submit"
         value="Login">
     </form>
-    <a href="../signup">
-    <p>Signup for Folf tracker</p></a>
+    <A class="font-medium hover:underline" href="../signup">
+    <p>Signup for Folf tracker</p></A>
 </div>
 
 

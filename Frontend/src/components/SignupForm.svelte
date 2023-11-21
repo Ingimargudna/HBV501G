@@ -1,4 +1,5 @@
 <script>
+    import {A} from 'flowbite-svelte';
     import {goto} from '$app/navigation';
     let backendRoute = 'http://localhost:8080/user';
     let password = '';
@@ -56,6 +57,6 @@
         type="submit"
         value="Signup">
     </form>
-    <a href="../login">
-    <p>Back to login</p></a>
+    <A class="font-medium hover:underline" href="../login">
+    <p>Back to login</p></A>
 </div>

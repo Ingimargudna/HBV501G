@@ -1,5 +1,5 @@
-
 <script>
+        import { A } from 'flowbite-svelte';
         let backendRoute = 'http://localhost:8080';
         let Username = window.sessionStorage.getItem('Username');
         let authenticatorTocen = window.sessionStorage.getItem('authenticatorTocen');
@@ -42,5 +42,9 @@
     <p>{user.username}</p>
 {/await}
 
-<a href="./newgame">
-<p>new game</p></a>
+<A class="font-medium hover:underline" href="./newgame">
+    New Game
+</A>
+<A class="font-medium hover:underline" href="./map">
+    Maps
+</A>
