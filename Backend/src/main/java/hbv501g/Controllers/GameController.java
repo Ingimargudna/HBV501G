@@ -140,7 +140,7 @@ public class GameController {
     }
 
     @DeleteMapping("/{id}")
-    public JsonResponse<Boolean> deleteGame(@RequestParam Long id){
+    public JsonResponse<Boolean> deleteGame(@PathVariable Long id){
         if(gameService.findByIdGame(id) == null){
             return new JsonResponse<Boolean>(false, "Game object missing or does not contain appropriate parameters", false);
         }
