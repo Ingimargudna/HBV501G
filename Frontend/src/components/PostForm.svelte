@@ -92,8 +92,9 @@
 
 
     function refresh(){
-        invalidateAll();
-        goto(window.location.pathname);
+        const path = window.location.pathname
+        goto('/').then(
+            ()=>goto(path));
         
     }
 </script>
