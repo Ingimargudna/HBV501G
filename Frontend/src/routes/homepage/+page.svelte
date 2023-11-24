@@ -22,7 +22,7 @@
             console.log('her er data');
             console.log(data);
             if (res.ok) {
-                return data;
+                return data.data;
             }
         }
         function logOut(){
@@ -40,16 +40,22 @@
 {#await loadUser()}
     <p>Fetching your info</p>
 {:then user} 
-    <p>{user.data.username}</p>
+    {#if user != null}
+    <p>{user.username}</p>
     <button on:click={()=>logOut()}>log out</button>
     <br/>
+        {#if !newgame}
+        <button on:click={()=>{newgame = true}}>New Game</button>
+        {:else}
+        <NewGameForm/>
+    {/if}
+    {:else}
+    <A class="font-medium hover:underline" href="/login">
+    Log In</A>
+    {/if}
 {/await}
 
-{#if !newgame}
-<button on:click={()=>{newgame = true}}>New Game</button>
-{:else}
-<NewGameForm/>
-{/if}
+
 <a href="./forum">
 <p>Forum</p></a>
 <a href="./viewallgames">

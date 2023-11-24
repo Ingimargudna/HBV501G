@@ -26,6 +26,24 @@
         return json;
     }
     
+    async function loadUser(){
+            console.log(backendRoute + "/user/user/?username="+window.sessionStorage.getItem('Username'))
+            const res = await fetch(
+                backendRoute + '/user/user/?username='+window.sessionStorage.getItem('Username'),
+                {method: 'GET',
+                headers: {"Content-Type": "application/json",
+                "Authorization": "Bearer " + window.sessionStorage.getItem('authenticatorTocen')}}
+            )
+            //console.log('her er res');
+            //console.log(res);
+            const data = await res.json();
+            console.log('her er data');
+            console.log(data);
+            if (res.ok) {
+                return data;
+            }
+            return null;
+        }
 
 </script>
 <Header/>
@@ -40,7 +58,11 @@
     </li>
     {/each}
     </ul>
-    {#if loggedIn}
+    {#await loadUser}
+        <p>Checking user validity</p>
+    {:then user}
+        {#if user != null} 
         <svelte:component this={PostForm} {...props}/>
-    {/if}
+        {/if}
+    {/await}
 {/await}

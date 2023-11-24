@@ -1,6 +1,6 @@
 <script>
     import {browser} from '$app/environment';
-    import {goto} from '$app/navigation';
+    import {invalidateAll,goto} from '$app/navigation';
     export let gameId;
     export let id;
     export let username;
@@ -59,6 +59,9 @@
         if(id==null){
             postHole();
         }else{ patchHole()};
+        invalidateAll();
+        goto('/').then(
+            ()=>goto(window.location.pathname+"?id="+gameId));
     }
     
 
